@@ -54,6 +54,4 @@ func connect() {
 	DB = &Database{
 		db: db,
 	}
-
-	// TODO run migrations
 }

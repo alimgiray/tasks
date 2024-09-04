@@ -79,14 +79,12 @@ func (m DashboardModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 				case 3: // Title
 					m.newTask.Title = m.inputBuffer[0:int(math.Min(float64(len(m.inputBuffer)), maxTitleLength))]
 
-					// Set default fields
 					m.newTask.Status = "Planning"    // Set default status
 					m.newTask.CreatedAt = time.Now() // Set created date
 					m.newTask.ProjectID = m.projectID
 
 					err := database.DB.CreateTask(m.newTask)
 					if err != nil {
-						// TODO find a way to handle errors
 						log.Fatalf("Failed to create task: %v", err)
 					}
 					m.tasks = append(m.tasks, m.newTask)
@@ -131,8 +129,7 @@ func (m DashboardModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 
 				err := database.DB.UpdateTask(m.tasks[m.currentRow])
 				if err != nil {
-					// TODO find a way to handle errors
-					log.Fatalf("Failed to create task: %v", err)
+					log.Fatalf("Failed to update task: %v", err)
 				}
 
 				m.isEditing = false

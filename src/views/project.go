@@ -55,7 +55,6 @@ func (m ProjectModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 				m.newProject.Name = m.inputBuffer
 				projectID, err := database.DB.CreateProject(m.newProject)
 				if err != nil {
-					// TODO find a way to handle errors
 					log.Fatalf("Failed to create project: %v", err)
 				}
 				m.newProject.ProjectID = projectID
@@ -81,7 +80,6 @@ func (m ProjectModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 				m.projects[m.currentRow].Name = m.inputBuffer
 				err := database.DB.UpdateProject(m.projects[m.currentRow])
 				if err != nil {
-					// TODO find a way to handle errors
 					log.Fatalf("Failed to update project: %v", err)
 				}
 				m.isEditing = false

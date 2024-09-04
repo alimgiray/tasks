@@ -2,7 +2,6 @@ package views
 
 import "github.com/charmbracelet/lipgloss"
 
-// TODO maybe move this into DB and make them dynamic?
 const (
 	STATUS_PLANNING    = "Planning"
 	STATUS_WAITING     = "Waiting"
